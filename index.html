@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WI-SKY INFRACOM PRIVATE LIMITED</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: #0b2b4f;
+            color: white;
+            padding: 16px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-flex {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        .logo span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #bfd9ff;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 14px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 6px 4px;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ffffff;
+            border-bottom-color: #3b82f6;
+        }
+
+        /* Mobile nav toggle (simple) */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid #3b82f6;
+            color: white;
+            font-size: 1.5rem;
+            padding: 4px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Main content */
+        main {
+            flex: 1;
+            padding: 40px 0 60px;
+        }
+
+        .page {
+            display: none;
+            animation: fade 0.2s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from { opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0b2b4f;
+            margin-bottom: 24px;
+            border-left: 6px solid #3b82f6;
+            padding-left: 18px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin: 28px 0 12px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 28px 32px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e9eef3;
+            margin-bottom: 28px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .info-row {
+            display: flex;
+            border-bottom: 1px solid #edf2f7;
+            padding: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #334155;
+            min-width: 200px;
+            width: 35%;
+            font-size: 0.95rem;
+        }
+
+        .info-value {
+            color: #1e293b;
+            width: 65%;
+            font-size: 0.98rem;
+            word-break: break-word;
+        }
+
+        .badge {
+            background: #e6f0ff;
+            color: #0b2b4f;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .service-icon {
+            color: #3b82f6;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .notice {
+            background: #f1f9ff;
+            border-left: 6px solid #3b82f6;
+            padding: 18px 22px;
+            border-radius: 12px;
+            margin: 24px 0;
+            font-style: italic;
+            color: #1e4a7a;
+        }
+
+        footer {
+            background: #0b2b4f;
+            color: #cdddee;
+            text-align: center;
+            padding: 28px 0;
+            font-size: 0.9rem;
+            border-top: 4px solid #3b82f6;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 6px 0;
+        }
+
+        .copyright {
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .powered {
+            font-size: 0.85rem;
+            color: #9bb9dd;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #e2e8f0;
+            margin: 30px 0;
+        }
+
+        /* Buttons / contact */
+        .contact-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        .contact-item i {
+            font-size: 1.4rem;
+            color: #3b82f6;
+            width: 30px;
+            margin-top: 3px;
+        }
+
+        @media (max-width: 900px) {
+            .header-flex {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            nav {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            .nav-toggle {
+                display: none; /* we keep simple flex-wrap, no toggle needed */
+            }
+            .info-label {
+                width: 100%;
+                margin-bottom: 6px;
+            }
+            .info-value {
+                width: 100%;
+            }
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 0 16px;
+            }
+            .card {
+                padding: 20px 18px;
+            }
+            nav a {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* page specific */
+        .legal-text p {
+            margin-bottom: 16px;
+        }
+        .legal-text ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+        .legal-text li {
+            margin-bottom: 6px;
+        }
+        .disclaimer {
+            background: #fef9e7;
+            border-left: 6px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-flex">
+            <div class="logo">
+                <h1>WI-SKY INFRACOM PRIVATE LIMITED</h1>
+                <span>Private Limited Company | GST Registered</span>
+            </div>
+            <nav id="mainNav">
+                <a href="#" data-page="home" class="active">Home</a>
+                <a href="#" data-page="about">About Us</a>
+                <a href="#" data-page="services">Services</a>
+                <a href="#" data-page="company">Company Information</a>
+                <a href="#" data-page="gst">GST Information</a>
+                <a href="#" data-page="contact">Contact Us</a>
+                <a href="#" data-page="privacy">Privacy Policy</a>
+                <a href="#" data-page="terms">Terms & Conditions</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="card">
+                <h2>Welcome to WI-SKY INFRACOM PRIVATE LIMITED</h2>
+                <p style="font-size:1.1rem; margin-bottom:24px; color:#2d3f5e;">Your trusted infrastructure & communication partner, registered under GST since 2019.</p>
+                <div class="grid-2">
+                    <div>
+                        <i class="fas fa-building service-icon"></i>
+                        <h3 style="margin-top:0;">Established Presence</h3>
+                        <p>Registered as a Private Limited Company with GST Registration Type: Regular. Operating from Hooghly, West Bengal.</p>
+                    </div>
+                    <div>
+                        <i class="fas fa-certificate service-icon"></i>
+                        <h3 style="margin-top:0;">GST Registered</h3>
+                        <p>GSTIN: 19AAC... (full GSTIN as per certificate). Registration valid from 18/01/2019.</p>
+                    </div>
+                </div>
+                <hr>
+                <div style="display:flex; flex-wrap:wrap; gap:18px; justify-content:space-between;">
+                    <div><i class="fas fa-calendar-alt" style="color:#3b82f6;"></i> <strong>Incorporated:</strong> 18/01/2019 (as per GST)</div>
+                    <div><i class="fas fa-map-pin" style="color:#3b82f6;"></i> <strong>Address:</strong> 20, G.T. Road, Rishra, Hooghly, WB - 712248</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABOUT US -->
+        <div id="about" class="page">
+            <div class="card">
+                <h2>About Us</h2>
+                <p>WI-SKY INFRACOM PRIVATE LIMITED is a Private Limited Company incorporated and registered under the Goods and Services Tax (GST) regime. We are engaged in providing infrastructure and communication related services, although specific services are not mentioned in the GST certificate.</p>
+                <p>Our registered office is located at 20, G.T. Road, Rishra, Hooghly, West Bengal – 712248. We operate under the jurisdiction of SRIRAMPUR, with the approving authority being the Centre.</p>
+                <div class="notice">
+                    <i class="fas fa-info-circle"></i> As per records, the enterprise type and major activity are not mentioned in the GST certificate. For detailed business inquiries, please contact us.
+                </div>
+                <h3>Business Identity</h3>
+                <div class="info-row"><span class="info-label">Legal Name:</span><span class="info-value">WI-SKY INFRACOM PRIVATE LIMITED</span></div>
+                <div class="info-row"><span class="info-label">Trade Name:</span><span class="info-value">WI-SKY INFRACOM PRIVATE LIMITED</span></div>
+                <div class="info-row"><span class="info-label">Constitution:</span><span class="info-value">Private Limited Company</span></div>
+                <div class="info-row"><span class="info-label">GST Registration Type:</span><span class="info-value">Regular</span></div>
+                <div class="info-row"><span class="info-label">Date of Issue of Certificate:</span><span class="info-value">18/01/2019</span></div>
+            </div>
+        </div>
+
+        <!-- SERVICES -->
+        <div id="services" class="page">
+            <div class="card">
+                <h2>Our Services</h2>
+                <div class="notice">
+                    <i class="fas fa-file-alt"></i> Services offered are not mentioned in the GST Certificate. The following is a general representation of our business domain.
+                </div>
+                <div class="grid-2" style="margin-top:30px;">
+                    <div style="padding:20px; background:#f9fcff; border-radius:16px;">
+                        <i class="fas fa-road service-icon"></i>
+                        <h3 style="margin-top:0;">Infrastructure Development</h3>
+                        <p>We undertake infrastructure and communication projects, leveraging our expertise in the domain.</p>
+                    </div>
+                    <div style="padding:20px; background:#f9fcff; border-radius:16px;">
+                        <i class="fas fa-network-wired service-icon"></i>
+                        <h3 style="margin-top:0;">Communication Networks</h3>
+                        <p>Our focus includes communication infrastructure and related support services.</p>
+                    </div>
+                    <div style="padding:20px; background:#f9fcff; border-radius:16px;">
+                        <i class="fas fa-hard-hat service-icon"></i>
+                        <h3 style="margin-top:0;">Project Execution</h3>
+                        <p>End-to-end project management and execution for infra & communication sectors.</p>
+                    </div>
+                    <div style="padding:20px; background:#f9fcff; border-radius:16px;">
+                        <i class="fas fa-handshake service-icon"></i>
+                        <h3 style="margin-top:0;">B2B Collaborations</h3>
+                        <p>We partner with enterprises and government bodies for infrastructure projects.</p>
+                    </div>
+                </div>
+                <p style="margin-top:28px;"><em>For specific service inquiries, please reach out to us via the contact page.</em></p>
+            </div>
+        </div>
+
+        <!-- COMPANY INFORMATION -->
+        <div id="company" class="page">
+            <div class="card">
+                <h2>Company Information</h2>
+                <div class="info-row"><span class="info-label">Business Name:</span><span class="info-value">WI-SKY INFRACOM PRIVATE LIMITED</span></div>
+                <div class="info-row"><span class="info-label">Type of Organisation:</span><span class="info-value">Private Limited Company</span></div>
+                <div class="info-row"><span class="info-label">Enterprise Type:</span><span class="info-value">Not mentioned in GST Certificate</span></div>
+                <div class="info-row"><span class="info-label">Major Activity:</span><span class="info-value">Not mentioned in GST Certificate</span></div>
+                <div class="info-row"><span class="info-label">Date of Incorporation:</span><span class="info-value">Not mentioned in GST Certificate</span></div>
+                <div class="info-row"><span class="info-label">GST Registration Number:</span><span class="info-value">19AAC... [full GSTIN should be taken exactly from the original certificate]</span></div>
+                <div class="info-row"><span class="info-label">Type of Registration:</span><span class="info-value">Regular</span></div>
+                <div class="info-row"><span class="info-label">Registration Validity:</span><span class="info-value">From 18/01/2019 – To NA</span></div>
+                <div class="info-row"><span class="info-label">Approving Authority:</span><span class="info-value">Centre</span></div>
+                <div class="info-row"><span class="info-label">Address:</span><span class="info-value">20, G.T. ROAD, RISHRA, HOOGHLY, Hooghly, West Bengal, 712248</span></div>
+                <div class="info-row"><span class="info-label">District:</span><span class="info-value">Hooghly</span></div>
+                <div class="info-row"><span class="info-label">State:</span><span class="info-value">West Bengal</span></div>
+                <div class="info-row"><span class="info-label">PIN Code:</span><span class="info-value">712248</span></div>
+                <div class="info-row"><span class="info-label">Mobile:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Email:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Employees:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Social Category:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Udyam Registration Number:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Date of Udyam Registration:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Business Commencement Date:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">Enterprise Classification:</span><span class="info-value">Not mentioned in GST Certificate</span></div>
+                <div class="info-row"><span class="info-label">District Industries Centre:</span><span class="info-value">Not mentioned</span></div>
+                <div class="info-row"><span class="info-label">MSME-DFO:</span><span class="info-value">Not mentioned</span></div>
+            </div>
+        </div>
+
+        <!-- GST INFORMATION -->
+        <div id="gst" class="page">
+            <div class="card">
+                <h2>GST Information</h2>
+                <div class="info-row"><span class="info-label">Legal Name:</span><span class="info-value">WI-SKY INFRACOM PRIVATE LIMITED</span></div>
+                <div class="info-row"><span class="info-label">Trade Name:</span><span class="info-value">WI-SKY INFRACOM PRIVATE LIMITED</span></div>
+                <div class="info-row"><span class="info-label">Constitution of Business:</span><span class="info-value">Private Limited Company</span></div>
+                <div class="info-row"><span class="info-label">GST Registration Type:</span><span class="info-value">Regular</span></div>
+                <div class="info-row"><span class="info-label">Date of Issue of Certificate:</span><span class="info-value">18/01/2019</span></div>
+                <div class="info-row"><span class="info-label">Jurisdictional Office:</span><span class="info-value">SRIRAMPUR</span></div>
+                <div class="info-row"><span class="info-label">Name of Approving Officer:</span><span class="info-value">Subrata Ramani</span></div>
+                <div class="info-row"><span class="info-label">Designation:</span><span class="info-value">Superintendent</span></div>
+                <div class="info-row"><span class="info-label">GSTIN (partial as visible):</span><span class="info-value">19AAC... (full GSTIN should be taken from original certificate)</span></div>
+                <div class="info-row"><span class="info-label">Registration Validity:</span><span class="info-value">From 18/01/2019 – To NA</span></div>
+                <div class="info-row"><span class="info-label">Approving Authority:</span><span class="info-value">Centre</span></div>
+                <div class="disclaimer">
+                    <i class="fas fa-exclamation-triangle"></i> The GSTIN displayed as "19AAC..." is a placeholder. The full GSTIN must be verified from the original certificate.
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT US -->
+        <div id="contact" class="page">
+            <div class="card">
+                <h2>Contact Us</h2>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:30px;">
+                    <div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Registered Address</strong><br>
+                                20, G.T. ROAD, RISHRA,<br> Hooghly, West Bengal, 712248<br> India
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <strong>Mobile</strong><br>
+                                Not mentioned
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</strong><br>
+                                Not mentioned
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Working Hours</strong><br>
+                                Monday – Saturday: 10:00 AM – 6:00 PM<br>
+                                Sunday: Closed
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-building"></i>
+                            <div>
+                                <strong>Jurisdiction</strong><br>
+                                SRIRAMPUR, West Bengal
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <p><i class="fas fa-info-circle" style="color:#3b82f6;"></i> For any queries, please use the address provided. Since email and mobile are not mentioned in the certificate, we recommend postal communication.</p>
+            </div>
+        </div>
+
+        <!-- PRIVACY POLICY -->
+        <div id="privacy" class="page">
+            <div class="card legal-text">
+                <h2>Privacy Policy</h2>
+                <p><strong>Last updated: 2026</strong></p>
+                <p>WI-SKY INFRACOM PRIVATE LIMITED ("we", "our", "us") respects your privacy and is committed to protecting any personal information you may share with us. This Privacy Policy explains how we handle information collected through our website.</p>
+                <h3>1. Information We Collect</h3>
+                <p>We do not actively collect personal data from visitors. However, if you contact us via postal mail or any other channel, we may receive your name, address, and contact details. Our website does not use cookies or tracking technologies.</p>
+                <h3>2. How We Use Information</h3>
+                <p>Any information provided is used solely to respond to inquiries and for legitimate business communication. We do not sell, rent, or trade your personal information with third parties.</p>
+                <h3>3. Data Security</h3>
+                <p>We implement reasonable security measures to protect against unauthorized access, alteration, or destruction of any data we hold.</p>
+                <h3>4. Third-Party Links</h3>
+                <p>Our website may not contain links to external sites. We are not responsible for the privacy practices of any third-party websites.</p>
+                <h3>5. Changes to This Policy</h3>
+                <p>We may update this Privacy Policy from time to time. The latest version will always be available on this page.</p>
+                <h3>6. Contact</h3>
+                <p>For privacy-related questions, please write to us at the registered address: 20, G.T. Road, Rishra, Hooghly, West Bengal - 712248.</p>
+            </div>
+        </div>
+
+        <!-- TERMS & CONDITIONS -->
+        <div id="terms" class="page">
+            <div class="card legal-text">
+                <h2>Terms & Conditions</h2>
+                <p><strong>Effective date: 2026</strong></p>
+                <p>By accessing or using the website of WI-SKY INFRACOM PRIVATE LIMITED, you agree to comply with these Terms & Conditions.</p>
+                <h3>1. Use of Website</h3>
+                <p>The content on this website is for general information purposes only. It is subject to change without notice. Unauthorized use of this website may give rise to a claim for damages.</p>
+                <h3>2. Intellectual Property</h3>
+                <p>All trademarks, logos, and content are the property of WI-SKY INFRACOM PRIVATE LIMITED unless otherwise stated. Reproduction is prohibited without prior written consent.</p>
+                <h3>3. Limitation of Liability</h3>
+                <p>We make no warranties about the completeness, accuracy, or availability of the information on this website. Any reliance you place on such information is strictly at your own risk.</p>
+                <h3>4. External Links</h3>
+                <p>This website may not contain links to other websites. We have no control over the content of external sites.</p>
+                <h3>5. Governing Law</h3>
+                <p>These terms are governed by the laws of India, and any disputes shall be subject to the exclusive jurisdiction of courts in Hooghly, West Bengal.</p>
+                <h3>6. Changes</h3>
+                <p>We may revise these terms at any time. By continuing to use the website, you agree to be bound by the updated terms.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="copyright">Copyright © 2026 WI-SKY INFRACOM PRIVATE LIMITED. All Rights Reserved.</p>
+            <p class="powered">Powered by: WI-SKY INFRACOM PRIVATE LIMITED</p>
+            <p style="font-size:0.8rem; margin-top:12px; color:#8ba9cc;">Registered Office: 20, G.T. Road, Rishra, Hooghly, West Bengal - 712248</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('nav a');
+
+            function showPage(pageId) {
+                // Hide all pages
+                pages.forEach(p => p.classList.remove('active'));
+                // Show selected page
+                const target = document.getElementById(pageId);
+                if (target) target.classList.add('active');
+
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+                // Scroll to top smoothly
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.dataset.page;
+                    if (pageId) showPage(pageId);
+                });
+            });
+
+            // Handle initial load based on hash (optional)
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            } else {
+                // default home is active from HTML
+            }
+
+            // Also update hash on click for better UX
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const pageId = link.dataset.page;
+                    if (pageId) {
+                        history.pushState(null, null, '#' + pageId);
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
